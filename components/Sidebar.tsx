@@ -19,7 +19,7 @@ const Sidebar: NextPage = () => {
   const wallet = useWallet()
   const keplr = useKeplr()
 
-  const activeColor = theme.isDarkTheme ? 'bg-purple/25' : 'bg-purple/10'
+  const activeColor = theme.isDarkTheme ? 'bg-jackal-green/25' : 'bg-jackal-green/10'
   const walletText = wallet.initialized
     ? wallet.name || getShortAddress(wallet.address)
     : 'Connect Wallet'
@@ -54,14 +54,13 @@ const Sidebar: NextPage = () => {
             alt="logo"
             width={55}
             height={55}
-            className="rounded-full"
+            className="full"
           />
           <span
-            className={`${
-              theme.isDarkTheme ? 'text-gray/75' : 'text-dark-gray/75'
-            } text-2xl ml-2 font-bold font-[Lato]`}
+            className={`${theme.isDarkTheme ? 'text-white' : 'text-white'
+              } text-2xl ml-2 font-bold font-[Lato]`}
           >
-            JunoTools
+            RNS
           </span>
         </button>
       </Link>
@@ -82,105 +81,22 @@ const Sidebar: NextPage = () => {
       </button>
 
       <div className="my-4">
-        <Link href="/airdrops" passHref>
+        <Link href="/register" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
-              router.pathname.includes('/airdrops') ? activeColor : ''
-            }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/register') ? activeColor : ''
+              }`}
           >
-            <div className="font-mono">Airdrops</div>
+            <div className="font-mono">Register</div>
           </button>
         </Link>
       </div>
 
-      <div>
-        <Link href="/contracts/cw20" passHref>
-          <button className="text-left opacity-50 p-2" disabled>
-            <div className="mb-4 font-mono">CW20 - Soon</div>
-          </button>
-        </Link>
-        {/* <div className="mb-5">
-          <Link href="/contracts/cw20/base" passHref>
-            <button
-              className={`flex items-center mb-1 w-full p-2 rounded-lg ${
-                router.pathname.includes('/contracts/cw20-base')
-                  ? activeColor
-                  : ''
-              }`}
-            >
-              <FiBox className="mr-2" /> Base
-            </button>
-          </Link>
-          <Link href="/contracts/cw20/bonding" passHref>
-            <button
-              className={`flex items-center mb-1 w-full p-2 rounded-lg ${
-                router.pathname.includes('/contracts/cw20-bonding')
-                  ? activeColor
-                  : ''
-              }`}
-            >
-              <FiBox className="mr-2" /> Bonding
-            </button>
-          </Link>
-          <Link href="/contracts/cw20/staking" passHref>
-            <button
-              className={`flex items-center mb-1 w-full p-2 rounded-lg ${
-                router.pathname.includes('/contracts/cw20-staking')
-                  ? activeColor
-                  : ''
-              }`}
-            >
-              <FiBox className="mr-2" /> Staking
-            </button>
-          </Link>
-        </div> */}
 
-        <div /* className="my-5" */>
-          <Link href="/contracts/cw1" passHref>
-            <button className="text-left opacity-50 p-2" disabled>
-              <div className="mb-4 font-mono">CW1 - Soon</div>
-            </button>
-          </Link>
-
-          {/* <div className="mb-5">
-            <Link href="/contracts/cw1/subkeys" passHref>
-              <button
-                className={`flex items-center mb-1 w-full p-2 rounded-lg ${
-                  router.pathname.includes('/contracts/cw1-subkeys')
-                    ? activeColor
-                    : ''
-                }`}
-              >
-                <FiBox className="mr-2" /> Subkeys
-              </button>
-            </Link>
-          </div> */}
-        </div>
-
-        <div /* className="my-5" */>
-          <Link href="/contracts/cw1" passHref>
-            <button className="text-left opacity-50 p-2" disabled>
-              <div className="mb-4 font-mono">CW721 - Soon</div>
-            </button>
-          </Link>
-        </div>
-      </div>
 
       <div className="flex-1"></div>
 
-      <div className="mb-3 font-mono">JunoTools v0.1.0-beta</div>
+      <div className="mb-3 font-mono">RNS v0.1.0-beta</div>
       <div className="ml-3">
-        <button className="flex items-center" onClick={changeThemeOnClick}>
-          {theme.isDarkTheme ? (
-            <>
-              <FiSun className="mr-2" /> Light Theme
-            </>
-          ) : (
-            <>
-              <FiMoon className="mr-2" /> Night Theme
-            </>
-          )}
-        </button>
         <a href="https://docs.juno.tools" target="_blank" rel="noreferrer">
           <button className="flex items-center my-3">
             <ImArrowUpRight2 className="mr-2" /> Documentation
@@ -191,20 +107,20 @@ const Sidebar: NextPage = () => {
             <ImArrowUpRight2 className="mr-2" /> Powered by Juno
           </button>
         </a>
-        <a href="https://deuslabs.fi" target="_blank" rel="noreferrer">
+        <a href="https://jackaldao.com" target="_blank" rel="noreferrer">
           <button className="flex items-center">
-            <ImArrowUpRight2 className="mr-2" /> Made by deus labs
+            <ImArrowUpRight2 className="mr-2" /> Made by JACKAL Labs
           </button>
         </a>
       </div>
       <div className="mt-5 flex items-center justify-evenly">
-        <a href="https://discord.gg/Juno" target="_blank" rel="noreferrer">
+        <a href="https://discord.com/invite/5GKym3p6rj" target="_blank" rel="noreferrer">
           <button className="flex items-center">
             <SiDiscord size={20} />
           </button>
         </a>
         <a
-          href="https://t.me/JunoNetwork"
+          href="https://t.me/+efpi_EpqiBA1Yzdh"
           target="_blank"
           rel="noreferrer"
           className="ml-5"
@@ -214,7 +130,7 @@ const Sidebar: NextPage = () => {
           </button>
         </a>
         <a
-          href="https://twitter.com/junotools"
+          href="https://twitter.com/JACKAL_DAO"
           target="_blank"
           rel="noreferrer"
           className="ml-5"
@@ -224,7 +140,7 @@ const Sidebar: NextPage = () => {
           </button>
         </a>
         <a
-          href="https://github.com/CosmosContracts/juno-tools"
+          href="https://github.com/JACKAL-DAO"
           target="_blank"
           rel="noreferrer"
           className="ml-5"

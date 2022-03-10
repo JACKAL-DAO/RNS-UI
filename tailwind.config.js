@@ -15,12 +15,12 @@ module.exports = {
         dark: '#06090B',
         gray: '#F3F6F8',
         'dark-gray': '#191D20',
-        purple: '#7E5DFF',
+        'jackal-green': '#45d29d',
 
         neutral: colors.neutral,
         plumbus: {
           DEFAULT: '#F0827D',
-          light: '#FF9D9E',
+          light: '#45d29d',
           matte: '#CA9991',
           10: '#FFF0ED',
           20: '#FACBC8',
@@ -51,10 +51,10 @@ module.exports = {
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.juno-gradient-bg': {
-          background: `linear-gradient(63.38deg, rgba(29, 24, 24, 0.25) 45.06%, rgba(240, 130, 125, 0.25) 100.6%), #252020`,
+          background: `linear-gradient(63.38deg, rgba(29, 24, 24, 0.25) 45.06%, rgba(27.1, 82.4, 61.6, 1) 100.6%), #040d21`,
         },
         '.juno-gradient-brand': {
-          background: `linear-gradient(102.33deg, #F9BCB2 10.96%, #FFFFFF 93.51%)`,
+          background: `linear-gradient(102.33deg, #9BCB2 10.96%, #FFFFFF 93.51%)`,
         },
       })
     }),

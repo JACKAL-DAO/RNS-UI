@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useTheme } from 'contexts/theme'
-import Brand from 'assets/brand.svg'
 
 const Home: NextPage = () => {
   const theme = useTheme()
@@ -9,31 +8,28 @@ const Home: NextPage = () => {
   return (
     <div className="h-3/4 w-3/4">
       <div className="flex justify-center flex-col items-center">
-        <Brand />
+
+        <img src={"/RNS_LOGO.png"} width={650} height={160} />
         <br />
 
-        <div className="text-[4rem]">Welcome to JunoTools!</div>
+        <div className="text-[4rem]">Welcome to RNS Name Service</div>
 
         <div className="text-center text-xl mt-3">
-          JunoTools is a swiss knife that helps you build on Juno by providing
-          smart contract front ends
+          RNS is the Inter-Blockchain-Communication name service built on JUNO, serving the entire Cosmos Ecosystem.
           <div className="mt-3"></div>
-          We call these front-end apps as{' '}
-          <span className="font-bold text-juno">
-            Smart Contact Dashboard
-          </span>{' '}
-          or <span className="font-bold text-juno">dashboard</span>
+
         </div>
 
         <div className="text-center text-xl mt-14">
-          Let&apos;s start with your first dashboard!
+          Register your own RNS name now!
         </div>
-        <Link href="/airdrops" passHref>
+
+        <Link href="/register" passHref>
           <button
             className={`${theme.isDarkTheme ? 'bg-gray/10' : 'bg-dark-gray/10'}
             p-3 rounded-lg mt-5 px-10 text-2xl`}
           >
-            Airdrops
+            Register
           </button>
         </Link>
       </div>
