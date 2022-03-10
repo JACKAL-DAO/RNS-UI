@@ -6,30 +6,27 @@ import { useWallet } from 'contexts/wallet'
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 
-
-
 const Airdrop: NextPage = () => {
   const theme = useTheme()
   const wallet = useWallet()
-  const [mintLoading, setMintLoading] = useState(false);
+  const [mintLoading, setMintLoading] = useState(false)
 
   const checkTaken = (address: String) => {
-    console.log(address);
+    console.log(address)
   }
 
   const registerName = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(e.target.nmval.value);
-    console.log(wallet);
+    e.preventDefault()
+    console.log(e.target.nmval.value)
+    console.log(wallet)
 
-    const client = wallet.getClient();
+    const client = wallet.getClient()
 
-    const contractAddress: string = String(process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS);
+    const contractAddress: string = String(
+      process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS
+    )
 
-
-    const msg = {
-
-    };
+    const msg = {}
 
     client
       .execute(wallet.address, contractAddress, msg, 'auto')
@@ -38,16 +35,13 @@ const Airdrop: NextPage = () => {
         toast.success('Name Registered!', {
           style: { maxWidth: 'none' },
         })
-
       })
       .catch((err: any) => {
         setMintLoading(false)
         toast.error(err.message, { style: { maxWidth: 'none' } })
       })
-    return false;
+    return false
   }
-
-
 
   return (
     <div className="h-4/4 w-3/4">
@@ -56,15 +50,16 @@ const Airdrop: NextPage = () => {
         <label className="block mb-2 text-lg font-bold text-gray-900 dark:text-gray-300 text-center">
           Domain Name
         </label>
-        <form className="container mx-auto grid gap-4 grid-cols-4" onSubmit={registerName}>
+        <form
+          className="container mx-auto grid gap-4 grid-cols-4"
+          onSubmit={registerName}
+        >
           <input
             name="nmval"
             id="nmval"
             type="text"
             className="col-span-3 bg-gray-50 border border-gray-300 text-black text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder={
-              'Enter name you wish to register'
-            }
+            placeholder={'Enter name you wish to register'}
             onChange={(e) => checkTaken(e.target.value)}
           />
           <button
@@ -75,9 +70,8 @@ const Airdrop: NextPage = () => {
             Register
           </button>
         </form>
-
       </div>
-    </div >
+    </div>
   )
 }
 

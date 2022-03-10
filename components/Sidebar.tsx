@@ -19,7 +19,9 @@ const Sidebar: NextPage = () => {
   const wallet = useWallet()
   const keplr = useKeplr()
 
-  const activeColor = theme.isDarkTheme ? 'bg-jackal-green/25' : 'bg-jackal-green/10'
+  const activeColor = theme.isDarkTheme
+    ? 'bg-jackal-green/25'
+    : 'bg-jackal-green/10'
   const walletText = wallet.initialized
     ? wallet.name || getShortAddress(wallet.address)
     : 'Connect Wallet'
@@ -57,8 +59,9 @@ const Sidebar: NextPage = () => {
             className="full"
           />
           <span
-            className={`${theme.isDarkTheme ? 'text-white' : 'text-white'
-              } text-2xl ml-2 font-bold font-[Lato]`}
+            className={`${
+              theme.isDarkTheme ? 'text-white' : 'text-white'
+            } text-2xl ml-2 font-bold font-[Lato]`}
           >
             RNS
           </span>
@@ -83,15 +86,14 @@ const Sidebar: NextPage = () => {
       <div className="my-4">
         <Link href="/register" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/register') ? activeColor : ''
-              }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
+              router.pathname.includes('/register') ? activeColor : ''
+            }`}
           >
             <div className="font-mono">Register</div>
           </button>
         </Link>
       </div>
-
-
 
       <div className="flex-1"></div>
 
@@ -114,7 +116,11 @@ const Sidebar: NextPage = () => {
         </a>
       </div>
       <div className="mt-5 flex items-center justify-evenly">
-        <a href="https://discord.com/invite/5GKym3p6rj" target="_blank" rel="noreferrer">
+        <a
+          href="https://discord.com/invite/5GKym3p6rj"
+          target="_blank"
+          rel="noreferrer"
+        >
           <button className="flex items-center">
             <SiDiscord size={20} />
           </button>

@@ -7,11 +7,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className="h-screen relative overflow-hidden juno-gradient-bg text-white">
       <Head>
         <title>RNS - IBC Name Service</title>
-        <meta name="description" content="Domain Name Service serving the IBC." />
+        <meta
+          name="description"
+          content="Domain Name Service serving the IBC."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-
 
       <div className="h-full flex z-10">
         <Sidebar />

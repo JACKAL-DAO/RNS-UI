@@ -8,16 +8,15 @@ const Home: NextPage = () => {
   return (
     <div className="h-3/4 w-3/4">
       <div className="flex justify-center flex-col items-center">
-
-        <img src={"/RNS_LOGO.png"} width={650} height={160} />
+        <img src={'/RNS_LOGO.png'} width={650} height={160} />
         <br />
 
         <div className="text-[4rem]">Welcome to RNS Name Service</div>
 
         <div className="text-center text-xl mt-3">
-          RNS is the Inter-Blockchain-Communication name service built on JUNO, serving the entire Cosmos Ecosystem.
+          RNS is the Inter-Blockchain-Communication name service built on JUNO,
+          serving the entire Cosmos Ecosystem.
           <div className="mt-3"></div>
-
         </div>
 
         <div className="text-center text-xl mt-14">
