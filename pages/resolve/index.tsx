@@ -19,11 +19,6 @@ const Airdrop: NextPage = () => {
   const registerName = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (!wallet.initialized) {
-      toast.error("Wallet not connected!", { style: { maxWidth: 'none' } })
-      return false;
-    }
-
     if (e.target.nmval.value.length < 1) {
       toast.error("Must enter a name!", { style: { maxWidth: 'none' } })
       return false;
@@ -35,49 +30,16 @@ const Airdrop: NextPage = () => {
       process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS
     )
 
-    let years = parseInt(e.target.years.value);
     let nm = e.target.nmval.value;
-    const msg = { register_name: { name: nm, years: years } }
+    const msg = { resolve_name: { name: nm } }
 
-    let cost = 156250;
-
-    switch (nm.length) {
-      case 1:
-        cost = 5000000;
-        break;
-      case 2:
-        cost = 2500000;
-        break;
-      case 3:
-        cost = 1250000;
-        break;
-      case 4:
-        cost = 625000;
-        break;
-      case 5:
-        cost = 312500;
-        break;
-      default:
-        cost = 156250;
-        break;
-    }
-
-    cost = cost * years;
-
-    let juno: Coin = {
-      denom: "ujunox",
-      amount: cost.toString()
-    }
-
-
-    let funds: Coin[] = [juno];
-
-    console.log(contractAddress);
     client
-      .execute(wallet.address, contractAddress, msg, 'auto', `Registering name: ${nm}`, funds)
-      .then(() => {
+      .queryContractSmart(contractAddress, msg)
+      .then((response) => {
+        e.target.addr.value = response.owner;
         setMintLoading(false)
-        toast.success('Name Registered!', {
+        console.log(response.owner)
+        toast.success("Resolved name.", {
           style: { maxWidth: 'none' },
         })
       })
@@ -91,10 +53,10 @@ const Airdrop: NextPage = () => {
 
   return (
     <div className="h-4/4 w-3/4">
-      <h1 className="text-6xl font-bold text-center">Register Domain Name</h1>
+      <h1 className="text-6xl font-bold text-center">Resolve Domain Name</h1>
       <div className="my-6">
         <form
-          className="container mx-auto grid gap-1 grid-cols-8 justify-items-center items-center"
+          className="container mx-auto grid gap-4 grid-cols-12 justify-items-center items-center"
           onSubmit={registerName}
         >
 
@@ -106,7 +68,7 @@ const Airdrop: NextPage = () => {
               id="nmval"
               type="text"
               className="col-span-7 h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder={'Enter name you wish to register'}
+              placeholder={'Enter name you wish to resolve'}
               onChange={(e) => checkTaken(e.target.value)}
             />
             <div
@@ -124,31 +86,22 @@ const Airdrop: NextPage = () => {
           </div>
 
 
-          <input
-            type="number"
-            id="years"
-            name="years"
-            min="1" max="10"
-            className="col-span-1 w-full text-2xl h-full text-black px-5 border-gray-300 rounded-l-md"
-            defaultValue="1"
-          />
-          <div
-            className="col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
-            style={{ marginLeft: "-10px", paddingLeft: "10px" }}
-          >
-            <label
-              htmlFor="years"
-            >
-              Years</label>
-          </div>
-
           <button
             type="submit"
             className={`${theme.isDarkTheme ? 'bg-gray/10' : 'bg-dark-gray/10'}
             col-span-1 h-full p-3 rounded-md text-2xl block`}
           >
-            Register
+            Resolve
           </button>
+
+          <input
+            name="addr"
+            id="addr"
+            type="text"
+            className="ml-4 col-span-6 h-full w-full box-border bg-gray-50 border-gray-300 text-black text-2xl rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder={'Address'}
+            onChange={(e) => checkTaken(e.target.value)}
+          />
         </form>
       </div>
     </div>

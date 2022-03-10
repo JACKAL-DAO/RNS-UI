@@ -37,7 +37,7 @@ const Airdrop: NextPage = () => {
 
     let years = parseInt(e.target.years.value);
     let nm = e.target.nmval.value;
-    const msg = { register_name: { name: nm, years: years } }
+    const msg = { add_time: { name: nm, years: years } }
 
     let cost = 156250;
 
@@ -74,10 +74,10 @@ const Airdrop: NextPage = () => {
 
     console.log(contractAddress);
     client
-      .execute(wallet.address, contractAddress, msg, 'auto', `Registering name: ${nm}`, funds)
+      .execute(wallet.address, contractAddress, msg, 'auto', `Extending Name: ${nm}`, funds)
       .then(() => {
         setMintLoading(false)
-        toast.success('Name Registered!', {
+        toast.success('Duration Extended!', {
           style: { maxWidth: 'none' },
         })
       })
@@ -91,7 +91,7 @@ const Airdrop: NextPage = () => {
 
   return (
     <div className="h-4/4 w-3/4">
-      <h1 className="text-6xl font-bold text-center">Register Domain Name</h1>
+      <h1 className="text-6xl font-bold text-center">Add Time to Domain Name</h1>
       <div className="my-6">
         <form
           className="container mx-auto grid gap-1 grid-cols-8 justify-items-center items-center"
@@ -106,7 +106,7 @@ const Airdrop: NextPage = () => {
               id="nmval"
               type="text"
               className="col-span-7 h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder={'Enter name you wish to register'}
+              placeholder={'Enter name you wish to extend'}
               onChange={(e) => checkTaken(e.target.value)}
             />
             <div
@@ -120,6 +120,8 @@ const Airdrop: NextPage = () => {
                 .rns
               </label>
             </div>
+
+
 
           </div>
 
@@ -147,7 +149,7 @@ const Airdrop: NextPage = () => {
             className={`${theme.isDarkTheme ? 'bg-gray/10' : 'bg-dark-gray/10'}
             col-span-1 h-full p-3 rounded-md text-2xl block`}
           >
-            Register
+            Extend
           </button>
         </form>
       </div>
