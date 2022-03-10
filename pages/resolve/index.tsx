@@ -5,7 +5,7 @@ import { ImArrowRight2 } from 'react-icons/im'
 import { useWallet } from 'contexts/wallet'
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
-import { Coin } from "@cosmjs/stargate";
+import { Coin } from '@cosmjs/stargate'
 
 const Airdrop: NextPage = () => {
   const theme = useTheme()
@@ -20,8 +20,8 @@ const Airdrop: NextPage = () => {
     e.preventDefault()
 
     if (e.target.nmval.value.length < 1) {
-      toast.error("Must enter a name!", { style: { maxWidth: 'none' } })
-      return false;
+      toast.error('Must enter a name!', { style: { maxWidth: 'none' } })
+      return false
     }
 
     const client = wallet.getClient()
@@ -30,23 +30,23 @@ const Airdrop: NextPage = () => {
       process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS
     )
 
-    let nm = e.target.nmval.value;
+    let nm = e.target.nmval.value
     const msg = { resolve_name: { name: nm } }
 
     client
       .queryContractSmart(contractAddress, msg)
       .then((response) => {
-        e.target.addr.value = response.owner;
+        e.target.addr.value = response.owner
         setMintLoading(false)
         console.log(response.owner)
-        toast.success("Resolved name.", {
+        toast.success('Resolved name.', {
           style: { maxWidth: 'none' },
         })
       })
       .catch((err: any) => {
         setMintLoading(false)
         toast.error(err.message, { style: { maxWidth: 'none' } })
-        console.error(err);
+        console.error(err)
       })
     return false
   }
@@ -59,10 +59,7 @@ const Airdrop: NextPage = () => {
           className="container mx-auto grid gap-4 grid-cols-12 justify-items-center items-center"
           onSubmit={registerName}
         >
-
-          <div
-            className='col-span-5 h-full w-full block grid grid-cols-8'
-          >
+          <div className="col-span-5 h-full w-full block grid grid-cols-8">
             <input
               name="nmval"
               id="nmval"
@@ -73,18 +70,13 @@ const Airdrop: NextPage = () => {
             />
             <div
               className="col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
-              style={{ marginLeft: "-10px", paddingLeft: "10px" }}
+              style={{ marginLeft: '-10px', paddingLeft: '10px' }}
             >
-              <label
-                htmlFor="nmval"
-                className='col-span-1'
-              >
+              <label htmlFor="nmval" className="col-span-1">
                 .rns
               </label>
             </div>
-
           </div>
-
 
           <button
             type="submit"

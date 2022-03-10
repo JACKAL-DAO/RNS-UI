@@ -5,7 +5,7 @@ import { ImArrowRight2 } from 'react-icons/im'
 import { useWallet } from 'contexts/wallet'
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
-import { Coin } from "@cosmjs/stargate";
+import { Coin } from '@cosmjs/stargate'
 
 const Airdrop: NextPage = () => {
   const theme = useTheme()
@@ -20,13 +20,13 @@ const Airdrop: NextPage = () => {
     e.preventDefault()
 
     if (!wallet.initialized) {
-      toast.error("Wallet not connected!", { style: { maxWidth: 'none' } })
-      return false;
+      toast.error('Wallet not connected!', { style: { maxWidth: 'none' } })
+      return false
     }
 
     if (e.target.nmval.value.length < 1) {
-      toast.error("Must enter a name!", { style: { maxWidth: 'none' } })
-      return false;
+      toast.error('Must enter a name!', { style: { maxWidth: 'none' } })
+      return false
     }
 
     const client = wallet.getClient()
@@ -35,46 +35,52 @@ const Airdrop: NextPage = () => {
       process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS
     )
 
-    let years = parseInt(e.target.years.value);
-    let nm = e.target.nmval.value;
+    let years = parseInt(e.target.years.value)
+    let nm = e.target.nmval.value
     const msg = { add_time: { name: nm, years: years } }
 
-    let cost = 156250;
+    let cost = 156250
 
     switch (nm.length) {
       case 1:
-        cost = 5000000;
-        break;
+        cost = 5000000
+        break
       case 2:
-        cost = 2500000;
-        break;
+        cost = 2500000
+        break
       case 3:
-        cost = 1250000;
-        break;
+        cost = 1250000
+        break
       case 4:
-        cost = 625000;
-        break;
+        cost = 625000
+        break
       case 5:
-        cost = 312500;
-        break;
+        cost = 312500
+        break
       default:
-        cost = 156250;
-        break;
+        cost = 156250
+        break
     }
 
-    cost = cost * years;
+    cost = cost * years
 
     let juno: Coin = {
-      denom: "ujunox",
-      amount: cost.toString()
+      denom: 'ujunox',
+      amount: cost.toString(),
     }
 
+    let funds: Coin[] = [juno]
 
-    let funds: Coin[] = [juno];
-
-    console.log(contractAddress);
+    console.log(contractAddress)
     client
-      .execute(wallet.address, contractAddress, msg, 'auto', `Extending Name: ${nm}`, funds)
+      .execute(
+        wallet.address,
+        contractAddress,
+        msg,
+        'auto',
+        `Extending Name: ${nm}`,
+        funds
+      )
       .then(() => {
         setMintLoading(false)
         toast.success('Duration Extended!', {
@@ -84,23 +90,22 @@ const Airdrop: NextPage = () => {
       .catch((err: any) => {
         setMintLoading(false)
         toast.error(err.message, { style: { maxWidth: 'none' } })
-        console.error(err);
+        console.error(err)
       })
     return false
   }
 
   return (
     <div className="h-4/4 w-3/4">
-      <h1 className="text-6xl font-bold text-center">Add Time to Domain Name</h1>
+      <h1 className="text-6xl font-bold text-center">
+        Add Time to Domain Name
+      </h1>
       <div className="my-6">
         <form
           className="container mx-auto grid gap-1 grid-cols-8 justify-items-center items-center"
           onSubmit={registerName}
         >
-
-          <div
-            className='col-span-5 h-full w-full block grid grid-cols-8'
-          >
+          <div className="col-span-5 h-full w-full block grid grid-cols-8">
             <input
               name="nmval"
               id="nmval"
@@ -111,37 +116,28 @@ const Airdrop: NextPage = () => {
             />
             <div
               className="col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
-              style={{ marginLeft: "-10px", paddingLeft: "10px" }}
+              style={{ marginLeft: '-10px', paddingLeft: '10px' }}
             >
-              <label
-                htmlFor="nmval"
-                className='col-span-1'
-              >
+              <label htmlFor="nmval" className="col-span-1">
                 .rns
               </label>
             </div>
-
-
-
           </div>
-
 
           <input
             type="number"
             id="years"
             name="years"
-            min="1" max="10"
+            min="1"
+            max="10"
             className="col-span-1 w-full text-2xl h-full text-black px-5 border-gray-300 rounded-l-md"
             defaultValue="1"
           />
           <div
             className="col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
-            style={{ marginLeft: "-10px", paddingLeft: "10px" }}
+            style={{ marginLeft: '-10px', paddingLeft: '10px' }}
           >
-            <label
-              htmlFor="years"
-            >
-              Years</label>
+            <label htmlFor="years">Years</label>
           </div>
 
           <button
