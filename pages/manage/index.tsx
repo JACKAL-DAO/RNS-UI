@@ -16,7 +16,7 @@ const Airdrop: NextPage = () => {
     console.log(address)
   }
 
-  const registerName = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const registerName = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!wallet.initialized) {
@@ -68,6 +68,17 @@ const Airdrop: NextPage = () => {
       denom: 'ujunox',
       amount: cost.toString(),
     }
+
+    let secret_id = await window.keplr.getKey("secret-4");
+    secret_id = secret_id.bech32Address;
+    let cro = await window.keplr.getKey("crypto-org-chain-mainnet-1");
+    cro = cro.bech32Address;
+    let iov = await window.keplr.getKey("iov-mainnet-ibc");
+    iov = iov.bech32Address;
+    let pers = await window.keplr.getKey("core-1");
+    pers = pers.bech32Address;
+    let kava = await window.keplr.getKey("kava-9");
+    kava = kava.bech32Address;
 
     let funds: Coin[] = [juno]
 

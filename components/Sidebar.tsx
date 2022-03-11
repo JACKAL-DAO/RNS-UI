@@ -59,9 +59,8 @@ const Sidebar: NextPage = () => {
             className="full"
           />
           <span
-            className={`${
-              theme.isDarkTheme ? 'text-white' : 'text-white'
-            } text-2xl ml-2 font-bold font-[Lato]`}
+            className={`${theme.isDarkTheme ? 'text-white' : 'text-white'
+              } text-2xl ml-2 font-bold font-[Lato]`}
           >
             RNS
           </span>
@@ -84,11 +83,19 @@ const Sidebar: NextPage = () => {
       </button>
 
       <div className="my-4">
+        <Link href="/" passHref>
+          <button
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${!(router.pathname.includes('/register') || router.pathname.includes('/manage') || router.pathname.includes('/resolve')) ? activeColor : ''
+              }`}
+          >
+            <div className="font-mono">Home</div>
+          </button>
+        </Link>
+
         <Link href="/register" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
-              router.pathname.includes('/register') ? activeColor : ''
-            }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/register') ? activeColor : ''
+              }`}
           >
             <div className="font-mono">Register</div>
           </button>
@@ -96,18 +103,16 @@ const Sidebar: NextPage = () => {
 
         <Link href="/manage" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
-              router.pathname.includes('/manage') ? activeColor : ''
-            }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/manage') ? activeColor : ''
+              }`}
           >
             <div className="font-mono">Manage</div>
           </button>
         </Link>
         <Link href="/resolve" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
-              router.pathname.includes('/resolve') ? activeColor : ''
-            }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/resolve') ? activeColor : ''
+              }`}
           >
             <div className="font-mono">Resolve</div>
           </button>
@@ -118,7 +123,7 @@ const Sidebar: NextPage = () => {
 
       <div className="mb-3 font-mono">RNS v0.1.0-beta</div>
       <div className="ml-3">
-        <a href="https://docs.juno.tools" target="_blank" rel="noreferrer">
+        <a href="https://jackal-wiki.notion.site/JACKAL-Wiki-02cf967e0a10475983823645238b8852" target="_blank" rel="noreferrer">
           <button className="flex items-center my-3">
             <ImArrowUpRight2 className="mr-2" /> Documentation
           </button>

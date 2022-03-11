@@ -7,6 +7,8 @@ import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { Coin } from '@cosmjs/stargate'
 
+
+
 const Airdrop: NextPage = () => {
   const theme = useTheme()
   const wallet = useWallet()
@@ -16,7 +18,7 @@ const Airdrop: NextPage = () => {
     console.log(address)
   }
 
-  const registerName = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const registerName = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!wallet.initialized) {
@@ -29,6 +31,19 @@ const Airdrop: NextPage = () => {
       return false
     }
 
+    let secret_id = await window.keplr.getKey("secret-4");
+    secret_id = secret_id.bech32Address;
+    let cro = await window.keplr.getKey("crypto-org-chain-mainnet-1");
+    cro = cro.bech32Address;
+    let iov = await window.keplr.getKey("iov-mainnet-ibc");
+    iov = iov.bech32Address;
+    let pers = await window.keplr.getKey("core-1");
+    pers = pers.bech32Address;
+    let kava = await window.keplr.getKey("kava-9");
+    kava = kava.bech32Address;
+    let terra = await window.keplr.getKey("columbus-5");
+    terra = terra.bech32Address;
+
     const client = wallet.getClient()
 
     const contractAddress: string = String(
@@ -37,7 +52,13 @@ const Airdrop: NextPage = () => {
 
     let years = parseInt(e.target.years.value)
     let nm = e.target.nmval.value
-    const msg = { register_name: { name: nm, years: years } }
+
+
+
+
+
+
+    const msg = { register_name: { name: nm, years: years, terra_address: terra, secret_address: secret_id, crypto_org_address: cro, kava_address: kava, persistence_address: pers, starname_address: iov } }
 
     let cost = 156250
 
