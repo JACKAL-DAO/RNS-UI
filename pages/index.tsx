@@ -33,7 +33,17 @@ const Home: NextPage = () => {
         </Link>
 
         <div className="text-center text-lg mt-32">
-          If you recieve an RNS name either by transfer or through a second-hand marketplace, you must re-claim it in order for it to resolve some networks such as Secret and Crypto.org. Read all about RNS and how it works <a className="text-emerald-400	" href='https://jackal-wiki.notion.site/RNS-Name-Service-b740514f19a547cb8071f0aed0d86a04'>here</a>.
+          If you recieve an RNS name either by transfer or through a second-hand
+          marketplace, you must re-claim it in order for it to resolve some
+          networks such as Secret and Crypto.org. Read all about RNS and how it
+          works{' '}
+          <a
+            className="text-emerald-400	"
+            href="https://jackal-wiki.notion.site/RNS-Name-Service-b740514f19a547cb8071f0aed0d86a04"
+          >
+            here
+          </a>
+          .
         </div>
       </div>
     </div>

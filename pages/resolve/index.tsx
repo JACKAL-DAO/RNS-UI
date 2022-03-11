@@ -11,9 +11,7 @@ const Airdrop: NextPage = () => {
   const theme = useTheme()
   const wallet = useWallet()
   const [mintLoading, setMintLoading] = useState(false)
-  const [desc, setDesc] = useState("");
-
-
+  const [desc, setDesc] = useState('')
 
   const checkTaken = (address: String) => {
     console.log(address)
@@ -40,7 +38,7 @@ const Airdrop: NextPage = () => {
       .queryContractSmart(contractAddress, msg)
       .then((response) => {
         e.target.addr.value = response.name.owner
-        setDesc(JSON.stringify(response.name, null, 2));
+        setDesc(JSON.stringify(response.name, null, 2))
         setMintLoading(false)
         console.log(response.owner)
         toast.success('Resolved name.', {
@@ -99,7 +97,7 @@ const Airdrop: NextPage = () => {
             onChange={(e) => checkTaken(e.target.value)}
           />
 
-          <label id="extra_info" className=' col-span-12 w-full'>
+          <label id="extra_info" className=" col-span-12 w-full">
             {desc}
           </label>
         </form>
