@@ -7,10 +7,20 @@ import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { Coin } from '@cosmjs/stargate'
 
+declare global {
+  interface Window {
+    keplr: any;
+  }
+}
+
+
 const Airdrop: NextPage = () => {
   const theme = useTheme()
   const wallet = useWallet()
   const [mintLoading, setMintLoading] = useState(false)
+
+
+
 
   const checkTaken = (address: String) => {
     console.log(address)
@@ -79,6 +89,7 @@ const Airdrop: NextPage = () => {
     pers = pers.bech32Address
     let kava = await window.keplr.getKey('kava-9')
     kava = kava.bech32Address
+
 
     let funds: Coin[] = [juno]
 

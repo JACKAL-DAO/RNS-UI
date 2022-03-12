@@ -20,6 +20,11 @@ const Airdrop: NextPage = () => {
   const registerName = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    if (!wallet.initialized) {
+      toast.error('Wallet not connected!', { style: { maxWidth: 'none' } })
+      return false
+    }
+
     if (e.target.nmval.value.length < 1) {
       toast.error('Must enter a name!', { style: { maxWidth: 'none' } })
       return false
