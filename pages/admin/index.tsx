@@ -30,26 +30,16 @@ const Airdrop: NextPage = () => {
       process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS
     )
 
-
-
     const msg = {
-      withdraw_balance: {
-
-      },
+      withdraw_balance: {},
     }
 
     console.log(contractAddress)
     client
-      .execute(
-        wallet.address,
-        contractAddress,
-        msg,
-        'auto',
-        "",
-      )
+      .execute(wallet.address, contractAddress, msg, 'auto', '')
       .then((res) => {
         setMintLoading(false)
-        console.log(res);
+        console.log(res)
         toast.success('Balance Withdrawn!', {
           style: { maxWidth: 'none' },
         })
@@ -64,14 +54,14 @@ const Airdrop: NextPage = () => {
 
   return (
     <div className="h-4/4 w-3/4">
-      <h1 className="text-6xl font-bold text-center">Withdraw Contract Balance</h1>
+      <h1 className="text-6xl font-bold text-center">
+        Withdraw Contract Balance
+      </h1>
       <div className="my-6">
         <form
           className="container mx-auto grid gap-1 grid-cols-5 justify-items-center items-center"
           onSubmit={registerName}
         >
-
-
           <button
             type="submit"
             className={`${theme.isDarkTheme ? 'bg-gray/10' : 'bg-dark-gray/10'}
