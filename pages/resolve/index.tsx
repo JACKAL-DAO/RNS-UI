@@ -79,48 +79,46 @@ const Airdrop: NextPage = () => {
   }
 
   const formatResolve = (data: any) => {
-    console.log(data);
+    console.log(data)
 
-    let expires = new Date((data.expires / 1000000));
+    let expires = new Date(data.expires / 1000000)
 
+    setExpires(expires.toLocaleString())
+    setAvatarURL(data.avatar_url)
+    setWebsite(data.website)
+    setEmail(data.email)
+    setTwitter(data.twitter)
+    setTelegram(data.telegram)
+    setDiscord(data.discord)
+    setInstagram(data.instagram)
+    setReddit(data.reddit)
 
+    setSCRT(data.secret_address)
+    setCRO(data.crypto_org_address)
+    setKAVA(data.kava_address)
+    setPERS(data.persistence_address)
+    setSTAR(data.starname_address)
+    setTERRA(data.terra_address)
 
-    setExpires(expires.toLocaleString());
-    setAvatarURL(data.avatar_url);
-    setWebsite(data.website);
-    setEmail(data.email);
-    setTwitter(data.twitter);
-    setTelegram(data.telegram);
-    setDiscord(data.discord);
-    setInstagram(data.instagram);
-    setReddit(data.reddit);
+    resolveName(data.id, 'atom').then((r) => {
+      setATOM(r)
+    })
 
-    setSCRT(data.secret_address);
-    setCRO(data.crypto_org_address);
-    setKAVA(data.kava_address);
-    setPERS(data.persistence_address);
-    setSTAR(data.starname_address);
-    setTERRA(data.terra_address);
+    resolveName(data.id, 'osmo').then((r) => {
+      setOSMO(r)
+    })
 
-    resolveName(data.id, "atom").then((r) => {
-      setATOM(r);
-    });
+    resolveName(data.id, 'akash').then((r) => {
+      setAKASH(r)
+    })
 
-    resolveName(data.id, "osmo").then((r) => {
-      setOSMO(r);
-    });
+    resolveName(data.id, 'sif').then((r) => {
+      setSIF(r)
+    })
 
-    resolveName(data.id, "akash").then((r) => {
-      setAKASH(r);
-    });
-
-    resolveName(data.id, "sif").then((r) => {
-      setSIF(r);
-    });
-
-    resolveName(data.id, "certik").then((r) => {
-      setCERTIK(r);
-    });
+    resolveName(data.id, 'certik').then((r) => {
+      setCERTIK(r)
+    })
   }
 
   return (
@@ -185,7 +183,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Expiration Date'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -206,7 +203,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Secret Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -227,7 +223,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Crypto.org Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -248,7 +243,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Kava Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -269,7 +263,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Terra Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -290,7 +283,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Persistence Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -311,7 +303,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Starname Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -332,7 +323,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Cosmos Hub Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -353,7 +343,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Osmosis Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -374,7 +363,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Akash Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -395,7 +383,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Sifchain Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -416,7 +403,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Certik Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -437,7 +423,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Avatar URL'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -458,7 +443,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Website URL'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -479,7 +463,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Email Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -500,7 +483,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Twitter handle'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -521,7 +503,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Telegram handle'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -542,7 +523,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'name#number'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -563,7 +543,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Instagram handle'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -584,7 +563,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'u/username'}
             />
-
           </div>
         </form>
       </div>

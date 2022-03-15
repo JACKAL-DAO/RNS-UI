@@ -15,17 +15,15 @@ const Airdrop: NextPage = () => {
   const [currentCost, setCost] = useState(0)
 
   const checkTaken = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCost(calculate_cost(e.target.value.length));
+    setCost(calculate_cost(e.target.value.length))
   }
 
   const setYearsCount = (e: React.ChangeEvent<HTMLInputElement>) => {
     setYears(parseInt(e.target.value))
   }
 
-
-
   const calculate_cost = (len: Number) => {
-    let cost = 156250;
+    let cost = 156250
 
     switch (len) {
       case 0:
@@ -51,7 +49,7 @@ const Airdrop: NextPage = () => {
         break
     }
 
-    return cost;
+    return cost
   }
 
   const registerName = async (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -82,8 +80,6 @@ const Airdrop: NextPage = () => {
 
     const client = wallet.getClient()
 
-
-
     const contractAddress: string = String(
       process.env.NEXT_PUBLIC_ENV_CONTRACT_ADDRESS
     )
@@ -101,18 +97,26 @@ const Airdrop: NextPage = () => {
         kava_address: kava,
         persistence_address: pers,
         starname_address: iov,
-        avatar_url: e.target.avatar_url.value.length > 0 ? e.target.avatar_url.value : null,
-        website: e.target.website.value.length > 0 ? e.target.website.value : null,
+        avatar_url:
+          e.target.avatar_url.value.length > 0
+            ? e.target.avatar_url.value
+            : null,
+        website:
+          e.target.website.value.length > 0 ? e.target.website.value : null,
         email: e.target.email.value.length > 0 ? e.target.email.value : null,
-        twitter: e.target.twitter.value.length > 0 ? e.target.twitter.value : null,
-        telegram: e.target.telegram.value.length > 0 ? e.target.telegram.value : null,
-        discord: e.target.discord.value.length > 0 ? e.target.discord.value : null,
-        instagram: e.target.instagram.value.length > 0 ? e.target.instagram.value : null,
+        twitter:
+          e.target.twitter.value.length > 0 ? e.target.twitter.value : null,
+        telegram:
+          e.target.telegram.value.length > 0 ? e.target.telegram.value : null,
+        discord:
+          e.target.discord.value.length > 0 ? e.target.discord.value : null,
+        instagram:
+          e.target.instagram.value.length > 0 ? e.target.instagram.value : null,
         reddit: e.target.reddit.value.length > 0 ? e.target.reddit.value : null,
       },
     }
 
-    let cost = calculate_cost(nm.length);
+    let cost = calculate_cost(nm.length)
 
     cost = cost * years
 
@@ -191,9 +195,7 @@ const Airdrop: NextPage = () => {
             <label htmlFor="years">Years</label>
           </div>
 
-          <div
-            className="col-span-1 text-2xl block h-full w-full text-right rounded-l-md bg-white text-black grid items-center"
-          >
+          <div className="col-span-1 text-2xl block h-full w-full text-right rounded-l-md bg-white text-black grid items-center">
             <label htmlFor="cost">{(currentCost * yearCount) / 1000000}</label>
           </div>
           <div
@@ -227,7 +229,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter URL'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -246,7 +247,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter URL'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -265,7 +265,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter Address'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -284,7 +283,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter @handle'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -303,7 +301,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter @handle'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -322,7 +319,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter name#number'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -341,7 +337,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter @handle'}
             />
-
           </div>
 
           <div className="col-span-6 h-full w-full block grid grid-cols-8">
@@ -360,12 +355,7 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter u/username'}
             />
-
           </div>
-
-
-
-
         </form>
       </div>
     </div>

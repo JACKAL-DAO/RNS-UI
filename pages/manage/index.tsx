@@ -155,13 +155,21 @@ const Airdrop: NextPage = () => {
         kava_address: kava,
         persistence_address: pers,
         starname_address: iov,
-        avatar_url: e.target.avatar_url.value.length > 0 ? e.target.avatar_url.value : null,
-        website: e.target.website.value.length > 0 ? e.target.website.value : null,
+        avatar_url:
+          e.target.avatar_url.value.length > 0
+            ? e.target.avatar_url.value
+            : null,
+        website:
+          e.target.website.value.length > 0 ? e.target.website.value : null,
         email: e.target.email.value.length > 0 ? e.target.email.value : null,
-        twitter: e.target.twitter.value.length > 0 ? e.target.twitter.value : null,
-        telegram: e.target.telegram.value.length > 0 ? e.target.telegram.value : null,
-        discord: e.target.discord.value.length > 0 ? e.target.discord.value : null,
-        instagram: e.target.instagram.value.length > 0 ? e.target.instagram.value : null,
+        twitter:
+          e.target.twitter.value.length > 0 ? e.target.twitter.value : null,
+        telegram:
+          e.target.telegram.value.length > 0 ? e.target.telegram.value : null,
+        discord:
+          e.target.discord.value.length > 0 ? e.target.discord.value : null,
+        instagram:
+          e.target.instagram.value.length > 0 ? e.target.instagram.value : null,
         reddit: e.target.reddit.value.length > 0 ? e.target.reddit.value : null,
       },
     }
@@ -173,7 +181,7 @@ const Airdrop: NextPage = () => {
         contractAddress,
         msg,
         'auto',
-        `Updating name: ${nm}`,
+        `Updating name: ${nm}`
       )
       .then(() => {
         setMintLoading(false)
@@ -242,13 +250,10 @@ const Airdrop: NextPage = () => {
             Extend
           </button>
         </form>
-
       </div>
 
       <div className="my-6">
-        <h1 className="text-6xl font-bold text-center">
-          Overwrite Metadata
-        </h1>
+        <h1 className="text-6xl font-bold text-center">Overwrite Metadata</h1>
         <form
           className="container my-4 mx-auto grid gap-1 grid-cols-8 justify-items-center items-center"
           onSubmit={overwriteName}
@@ -296,7 +301,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter URL'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -315,7 +319,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter URL'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -334,7 +337,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter Address'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -353,7 +355,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter @handle'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -372,7 +373,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter @handle'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -391,7 +391,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter name#number'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -410,7 +409,6 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter @handle'}
             />
-
           </div>
 
           <div className="col-span-4 h-full w-full block grid grid-cols-8">
@@ -429,12 +427,7 @@ const Airdrop: NextPage = () => {
               className="col-span-6 h-full w-full bg-gray-50 box-content border-gray-300  text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter u/username'}
             />
-
           </div>
-
-
-
-
         </form>
       </div>
     </div>

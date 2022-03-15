@@ -59,8 +59,9 @@ const Sidebar: NextPage = () => {
             className="full"
           />
           <span
-            className={`${theme.isDarkTheme ? 'text-white' : 'text-white'
-              } text-2xl ml-2 font-bold font-[Lato]`}
+            className={`${
+              theme.isDarkTheme ? 'text-white' : 'text-white'
+            } text-2xl ml-2 font-bold font-[Lato]`}
           >
             RNS
           </span>
@@ -85,16 +86,17 @@ const Sidebar: NextPage = () => {
       <div className="my-4">
         <Link href="/" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${!(
-              router.pathname.includes('/register') ||
-              router.pathname.includes('/manage') ||
-              router.pathname.includes('/resolve') ||
-              router.pathname.includes('/admin') ||
-              router.pathname.includes('/howto')
-            )
-              ? activeColor
-              : ''
-              }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
+              !(
+                router.pathname.includes('/register') ||
+                router.pathname.includes('/manage') ||
+                router.pathname.includes('/resolve') ||
+                router.pathname.includes('/admin') ||
+                router.pathname.includes('/howto')
+              )
+                ? activeColor
+                : ''
+            }`}
           >
             <div className="font-mono">Home</div>
           </button>
@@ -102,8 +104,9 @@ const Sidebar: NextPage = () => {
 
         <Link href="/register" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/register') ? activeColor : ''
-              }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
+              router.pathname.includes('/register') ? activeColor : ''
+            }`}
           >
             <div className="font-mono">Register</div>
           </button>
@@ -111,16 +114,18 @@ const Sidebar: NextPage = () => {
 
         <Link href="/manage" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/manage') ? activeColor : ''
-              }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
+              router.pathname.includes('/manage') ? activeColor : ''
+            }`}
           >
             <div className="font-mono">Manage</div>
           </button>
         </Link>
         <Link href="/resolve" passHref>
           <button
-            className={`flex items-center mb-1 w-full rounded-lg p-2 ${router.pathname.includes('/resolve') ? activeColor : ''
-              }`}
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
+              router.pathname.includes('/resolve') ? activeColor : ''
+            }`}
           >
             <div className="font-mono">Resolve</div>
           </button>
