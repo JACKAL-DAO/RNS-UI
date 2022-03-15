@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <div className="h-3/4 w-3/4">
       <div className="flex justify-center flex-col items-center">
-        <img src={'/RNS_LOGO.png'} width={650} height={160} />
+        <img alt="RNS Logo" src={'/RNS_LOGO.png'} width={650} height={160} />
         <br />
 
         <div className="text-[4rem]">Welcome to RNS Name Service</div>
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className="text-center text-xl mt-14">
-          Register your own RNS name now!
+          Simplify your COSMOS experience.
         </div>
 
         <Link href="/register" passHref>
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
             className={`${theme.isDarkTheme ? 'bg-gray/10' : 'bg-dark-gray/10'}
             p-3 rounded-lg mt-5 px-10 text-2xl`}
           >
-            Register
+            Register Now
           </button>
         </Link>
 
