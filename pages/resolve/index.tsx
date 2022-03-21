@@ -28,6 +28,7 @@ const Airdrop: NextPage = () => {
   const [kava, setKAVA] = useState('')
   const [terra, setTERRA] = useState('')
   const [atom, setATOM] = useState('')
+  const [stars, setSTARS] = useState('')
   const [osmo, setOSMO] = useState('')
   const [akash, setAKASH] = useState('')
   const [sif, setSIF] = useState('')
@@ -102,6 +103,10 @@ const Airdrop: NextPage = () => {
 
     resolveName(data.id, 'atom').then((r) => {
       setATOM(r)
+    })
+
+    resolveName(data.id, 'stars').then((r) => {
+      setSTARS(r)
     })
 
     resolveName(data.id, 'osmo').then((r) => {
@@ -282,6 +287,26 @@ const Airdrop: NextPage = () => {
               value={pers}
               className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Persistence Address'}
+            />
+          </div>
+
+          <div className="col-span-6 h-full w-full block grid grid-cols-8">
+            <div
+              className="col-span-2 text-2xl block h-full w-full text-left rounded-l-md bg-white text-black grid items-center  py-2"
+              style={{ marginRight: '-20px', paddingLeft: '10px', zIndex: 2 }}
+            >
+              <label htmlFor="stars" className="col-span-1 bg-white">
+                Stargaze
+              </label>
+            </div>
+            <input
+              name="stars"
+              id="stars"
+              type="text"
+              readOnly
+              value={stars}
+              className="col-span-6 w-full h-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={'Stargaze Address'}
             />
           </div>
 
