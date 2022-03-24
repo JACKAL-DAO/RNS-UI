@@ -71,7 +71,7 @@ const Airdrop: NextPage = () => {
     cost = cost * years
 
     let juno: Coin = {
-      denom: 'ujunox',
+      denom: 'ujuno',
       amount: cost.toString(),
     }
 
@@ -198,9 +198,10 @@ const Airdrop: NextPage = () => {
   }
 
   return (
-    <div className="h-4/4 w-3/4">
+    <div className="h-4/4 w-max w-lg-3/4">
       <h1 className="text-6xl font-bold text-center">How To Video</h1>
-      <div className="my-6">
+      <h1 className="text-6lg font-bold text-center">Coming Soon</h1>
+      <div className="my-lg-6">
         <iframe
           className="rounded-lg"
           width="1280"

@@ -134,7 +134,7 @@ export const CW20Bonding = (
         { buy: {} },
         'auto',
         '',
-        [coin(amount, 'ujunox')]
+        [coin(amount, 'ujuno')]
       )
       return result.transactionHash
     }

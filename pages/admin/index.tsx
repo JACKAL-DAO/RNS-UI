@@ -24,6 +24,7 @@ const Airdrop: NextPage = () => {
       return false
     }
 
+
     const client = wallet.getClient()
 
     const contractAddress: string = String(

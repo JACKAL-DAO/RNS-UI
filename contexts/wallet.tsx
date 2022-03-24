@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { getConfig } from '../config'
-import { createClient } from '../services/keplr'
+import { createClient, createNWClient } from '../services/keplr'
 import { SigningCosmWasmClient } from '@cosmjs/cosmwasm-stargate'
-import { Coin } from '@cosmjs/stargate'
+import { Coin, SigningStargateClient } from '@cosmjs/stargate'
 import { OfflineSigner } from '@cosmjs/proto-signing'
 
 interface WalletContextType {
@@ -15,6 +15,7 @@ interface WalletContextType {
   readonly balance: readonly Coin[]
   readonly refreshBalance: () => Promise<void>
   readonly getClient: () => SigningCosmWasmClient
+  readonly getNoWASMClient: () => SigningStargateClient
   readonly getSigner: () => OfflineSigner
   readonly updateSigner: (singer: OfflineSigner) => void
   readonly network: string
@@ -34,6 +35,7 @@ const defaultContext: WalletContextType = {
   balance: [],
   refreshBalance: throwNotInitialized,
   getClient: throwNotInitialized,
+  getNoWASMClient: throwNotInitialized,
   getSigner: throwNotInitialized,
   updateSigner: throwNotInitialized,
   network: '',
@@ -53,6 +55,7 @@ export function WalletProvider({
 }: any): JSX.Element {
   const [signer, setSigner] = useState<OfflineSigner>()
   const [client, setClient] = useState<SigningCosmWasmClient>()
+  const [nwclient, setNWClient] = useState<SigningStargateClient>()
   const config = getConfig(network)
 
   const contextWithInit = {
@@ -66,6 +69,7 @@ export function WalletProvider({
   const clear = (): void => {
     setValue({ ...contextWithInit })
     setClient(undefined)
+    setNWClient(undefined)
     setSigner(undefined)
   }
 
@@ -94,6 +98,8 @@ export function WalletProvider({
     ;(async function updateClient(): Promise<void> {
       try {
         const client = await createClient(signer, network)
+        const nclient = await createNWClient(signer, network)
+        setNWClient(nclient)
         setClient(client)
       } catch (error) {
         console.log(error)
@@ -102,7 +108,7 @@ export function WalletProvider({
   }, [signer])
 
   useEffect(() => {
-    if (!signer || !client) return
+    if (!signer || !client || !nwclient) return
 
     const balance: Coin[] = []
 
@@ -125,6 +131,7 @@ export function WalletProvider({
         balance,
         refreshBalance: refreshBalance.bind(null, address, balance),
         getClient: () => client,
+        getNoWASMClient: () => nwclient,
         getSigner: () => signer,
         updateSigner,
         network,

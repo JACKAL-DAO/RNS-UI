@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { OfflineSigner } from '@cosmjs/proto-signing'
 import { SigningCosmWasmClient } from '@cosmjs/cosmwasm-stargate'
+import { SigningStargateClient } from '@cosmjs/stargate'
 import { Decimal } from '@cosmjs/math'
 import { getConfig, keplrConfig, AppConfig } from 'config'
 import { useWallet } from 'contexts/wallet'
@@ -13,6 +14,20 @@ export async function createClient(
   const config = getConfig(network)
 
   return SigningCosmWasmClient.connectWithSigner(config.rpcUrl, signer, {
+    gasPrice: {
+      amount: Decimal.fromUserInput('0.0025', 100),
+      denom: config.feeToken,
+    },
+  })
+}
+
+export async function createNWClient(
+  signer: OfflineSigner,
+  network: string
+): Promise<SigningStargateClient> {
+  const config = getConfig(network)
+
+  return SigningStargateClient.connectWithSigner(config.rpcUrl, signer, {
     gasPrice: {
       amount: Decimal.fromUserInput('0.0025', 100),
       denom: config.feeToken,

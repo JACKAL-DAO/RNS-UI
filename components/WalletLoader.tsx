@@ -4,8 +4,7 @@ import { useKeplr } from 'services/keplr'
 
 const WalletLoader: NextPage = () => {
   const keplr = useKeplr()
-
-  const connectWallet = useCallback(() => keplr.connect(), [keplr])
+  const connectWallet = useCallback(() => {keplr.connect()}, [keplr])
 
   return (
     <button onClick={connectWallet}>

@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useWallet } from 'contexts/wallet'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, KeyboardEvent  } from 'react'
 import toast from 'react-hot-toast'
 import { Coin } from '@cosmjs/stargate'
 
@@ -15,7 +15,14 @@ const Airdrop: NextPage = () => {
   const [currentCost, setCost] = useState(0)
 
   const checkTaken = (e: React.ChangeEvent<HTMLInputElement>) => {
+  
+    e.target.value = e.target.value.replace(/[^\x00-\x7F]/g, '')
     setCost(calculate_cost(e.target.value.length))
+  }
+
+  const asciiProof = (evt: KeyboardEvent<HTMLInputElement>) => {
+    
+    return true;
   }
 
   const setYearsCount = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,8 +82,14 @@ const Airdrop: NextPage = () => {
     pers = pers.bech32Address
     let kava = await window.keplr.getKey('kava-9')
     kava = kava.bech32Address
+
+    
+
+
     let terra = await window.keplr.getKey('columbus-5')
     terra = terra.bech32Address
+
+    
 
     const client = wallet.getClient()
 
@@ -121,7 +134,7 @@ const Airdrop: NextPage = () => {
     cost = cost * years
 
     let juno: Coin = {
-      denom: 'ujunox',
+      denom: 'ujuno',
       amount: cost.toString(),
     }
 
@@ -152,7 +165,7 @@ const Airdrop: NextPage = () => {
   }
 
   return (
-    <div className="h-4/4 w-3/4">
+    <div className="h-4/4 w-11/12 w-lg-3/4">
       <h1 className="text-6xl font-bold text-center">Register Domain Name</h1>
       <div className="my-6">
         <form
@@ -167,6 +180,7 @@ const Airdrop: NextPage = () => {
               className="col-span-7 h-full w-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Enter name you wish to register'}
               onChange={(e) => checkTaken(e)}
+              onKeyPress={(event) => asciiProof(event)}
             />
             <div
               className="col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"

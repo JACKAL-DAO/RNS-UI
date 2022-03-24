@@ -6,7 +6,7 @@ import { useWallet } from 'contexts/wallet'
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { Coin } from '@cosmjs/stargate'
-import { resolveName } from 'utils/retriever'
+import { resolveName, getAddress, getHex } from 'utils/retriever'
 
 const Airdrop: NextPage = () => {
   const theme = useTheme()
@@ -33,6 +33,7 @@ const Airdrop: NextPage = () => {
   const [akash, setAKASH] = useState('')
   const [sif, setSIF] = useState('')
   const [certik, setCERTIK] = useState('')
+  const [jackal, setJACKAL] = useState('')
 
   const checkTaken = (address: String) => {
     console.log(address)
@@ -101,33 +102,18 @@ const Airdrop: NextPage = () => {
     setSTAR(data.starname_address)
     setTERRA(data.terra_address)
 
-    resolveName(data.id, 'atom').then((r) => {
-      setATOM(r)
-    })
-
-    resolveName(data.id, 'stars').then((r) => {
-      setSTARS(r)
-    })
-
-    resolveName(data.id, 'osmo').then((r) => {
-      setOSMO(r)
-    })
-
-    resolveName(data.id, 'akash').then((r) => {
-      setAKASH(r)
-    })
-
-    resolveName(data.id, 'sif').then((r) => {
-      setSIF(r)
-    })
-
-    resolveName(data.id, 'certik').then((r) => {
-      setCERTIK(r)
-    })
+    setJACKAL(getAddress('jackal', getHex(data.owner)))
+    setATOM(getAddress('atom', getHex(data.owner)))
+    setSTARS(getAddress('stars', getHex(data.owner)))
+    setOSMO(getAddress('osmo', getHex(data.owner)))
+    setAKASH(getAddress('akash', getHex(data.owner)))
+    setSIF(getAddress('sif', getHex(data.owner)))
+    setCERTIK(getAddress('certik', getHex(data.owner)))
+    
   }
 
   return (
-    <div className="h-4/4 w-3/4">
+    <div className="h-4/4 w-11/12 w-lg-3/4">
       <h1 className="text-6xl font-bold text-center">Resolve Domain Name</h1>
       <div className="my-6">
         <form
@@ -207,6 +193,26 @@ const Airdrop: NextPage = () => {
               value={scrt}
               className="col-span-6 w-full h-full box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={'Secret Address'}
+            />
+          </div>
+
+          <div className="col-span-6 h-full w-full block grid grid-cols-8">
+            <div
+              className="col-span-2 text-2xl block h-full w-full text-left rounded-l-md bg-white text-black grid items-center  py-2"
+              style={{ marginRight: '-20px', paddingLeft: '10px', zIndex: 2 }}
+            >
+              <label htmlFor="jackal" className="col-span-1 bg-white">
+                JACKAL
+              </label>
+            </div>
+            <input
+              name="jackal"
+              id="jackal"
+              type="text"
+              readOnly
+              value={jackal}
+              className="col-span-6 w-full h-full box-content border-gray-300 text-black text-2xl rounded-r-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={'JACKAL Address'}
             />
           </div>
 

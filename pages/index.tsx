@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   const theme = useTheme()
 
   return (
-    <div className="h-3/4 w-3/4">
+    <div className="h-3/4 w-11/12 w-lg-3/4">
       <div className="flex justify-center flex-col items-center">
         <img alt="RNS Logo" src={'/RNS_LOGO.png'} width={650} height={160} />
         <br />

@@ -12,6 +12,7 @@ import getShortAddress from 'utils/getShortAddress'
 import { loadKeplrWallet, useKeplr } from 'services/keplr'
 import { useRouter } from 'next/router'
 import { getConfig } from 'config'
+import { addTerra } from 'utils/terra'
 
 const Sidebar: NextPage = () => {
   const router = useRouter()
@@ -33,11 +34,12 @@ const Sidebar: NextPage = () => {
   useEffect(() => {
     // Used for listening keplr account changes
     window.addEventListener('keplr_keystorechange', () => {
+
       keplr.connect(true)
     })
   }, [])
 
-  const connectWallet = useCallback(() => keplr.connect(), [keplr])
+  const connectWallet = useCallback(async () => { keplr.connect(), await addTerra(); keplr.connect()} , [keplr])
 
   const walletOnClick = () => {
     if (wallet.initialized) {
@@ -92,7 +94,8 @@ const Sidebar: NextPage = () => {
                 router.pathname.includes('/manage') ||
                 router.pathname.includes('/resolve') ||
                 router.pathname.includes('/admin') ||
-                router.pathname.includes('/howto')
+                router.pathname.includes('/howto') ||
+                router.pathname.includes('/use')
               )
                 ? activeColor
                 : ''
@@ -130,6 +133,15 @@ const Sidebar: NextPage = () => {
             <div className="font-mono">Resolve</div>
           </button>
         </Link>
+        <Link href="/use" passHref>
+          <button
+            className={`flex items-center mb-1 w-full rounded-lg p-2 ${
+              router.pathname.includes('/use') ? activeColor : ''
+            }`}
+          >
+            <div className="font-mono">Use</div>
+          </button>
+        </Link>
       </div>
 
       <div className="flex-1"></div>
@@ -153,7 +165,7 @@ const Sidebar: NextPage = () => {
 
         <a href="https://www.junonetwork.io/" target="_blank" rel="noreferrer">
           <button className="flex items-center my-3">
-            <ImArrowUpRight2 className="mr-2" /> Powered by Juno
+            <ImArrowUpRight2 className="mr-2" /> Built on Juno
           </button>
         </a>
         <a href="https://jackaldao.com" target="_blank" rel="noreferrer">

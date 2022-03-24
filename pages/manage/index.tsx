@@ -19,6 +19,7 @@ const Airdrop: NextPage = () => {
   const [mintLoading, setMintLoading] = useState(false)
 
   const checkTaken = (address: String) => {
+
     console.log(address)
   }
 
@@ -71,7 +72,7 @@ const Airdrop: NextPage = () => {
     cost = cost * years
 
     let juno: Coin = {
-      denom: 'ujunox',
+      denom: 'ujuno',
       amount: cost.toString(),
     }
 
@@ -198,7 +199,7 @@ const Airdrop: NextPage = () => {
   }
 
   return (
-    <div className="h-4/4 w-3/4">
+    <div className="h-4/4 w-11/12 w-lg-3/4">
       <h1 className="text-6xl font-bold text-center">
         Add Time to Domain Name
       </h1>

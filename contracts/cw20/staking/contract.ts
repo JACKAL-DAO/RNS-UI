@@ -154,7 +154,7 @@ export const CW20Staking = (
         { bond: {} },
         'auto',
         '',
-        [coin(amount, 'ujunox')]
+        [coin(amount, 'ujuno')]
       )
       return result.transactionHash
     }

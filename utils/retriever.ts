@@ -1,14 +1,14 @@
 import { Bech32, fromHex, toHex } from '@cosmjs/encoding'
-import { SigningCosmWasmClient } from '@cosmjs/cosmwasm-stargate'
+import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate'
 
 export function resolveName(
   name: string,
   prefix: string = '',
-  contractAddress: string = 'juno1kl5cgeuzyyckmnrxtdy8p0dkravc93u7c9806wt3es67qt6qnndshf4l5p',
-  rpc: string = 'https://rpc.uni.junomint.com:443/'
+  contractAddress: string = 'juno1ysj68e0fd8skp7xy23rm4jstwm0jpwmyckpj5zge9a03rxy4ay2s7ltm7f',
+  rpc: string = 'https://rpc-juno.itastakers.com/'
 ): Promise<string> {
   return new Promise((resolve, reject) => {
-    SigningCosmWasmClient.connect(rpc).then((client) => {
+    CosmWasmClient.connect(rpc).then((client) => {
       if (name.endsWith('.rns')) {
         name = name.substring(0, name.length - 4)
       }
