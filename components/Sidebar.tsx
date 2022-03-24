@@ -34,12 +34,14 @@ const Sidebar: NextPage = () => {
   useEffect(() => {
     // Used for listening keplr account changes
     window.addEventListener('keplr_keystorechange', () => {
-
       keplr.connect(true)
     })
   }, [])
 
-  const connectWallet = useCallback(async () => { keplr.connect(), await addTerra(); keplr.connect()} , [keplr])
+  const connectWallet = useCallback(async () => {
+    keplr.connect(), await addTerra()
+    keplr.connect()
+  }, [keplr])
 
   const walletOnClick = () => {
     if (wallet.initialized) {

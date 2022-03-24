@@ -3,17 +3,16 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useWallet } from 'contexts/wallet'
-import React, { useState, useEffect, KeyboardEvent  } from 'react'
+import React, { useState, useEffect, KeyboardEvent } from 'react'
 import toast from 'react-hot-toast'
 import { Coin, SigningStargateClient } from '@cosmjs/stargate'
-import {getConfig} from "../../config/network";
-import {resolveName} from "../../utils/retriever";
+import { getConfig } from '../../config/network'
+import { resolveName } from '../../utils/retriever'
 
 const Airdrop: NextPage = () => {
   const theme = useTheme()
   const wallet = useWallet()
   const [mintLoading, setMintLoading] = useState(false)
-
 
   const registerName = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -28,7 +27,6 @@ const Airdrop: NextPage = () => {
       return false
     }
 
-
     let secret_id = await window.keplr.getKey('secret-4')
     secret_id = secret_id.bech32Address
     let cro = await window.keplr.getKey('crypto-org-chain-mainnet-1')
@@ -40,44 +38,38 @@ const Airdrop: NextPage = () => {
     let kava = await window.keplr.getKey('kava-9')
     kava = kava.bech32Address
 
-    
-
-
     let terra = await window.keplr.getKey('columbus-5')
     terra = terra.bech32Address
 
-
     let juno = await window.keplr.getKey('juno-1')
-    juno = juno.bech32Address;
+    juno = juno.bech32Address
 
     let coin: Coin = {
       denom: 'ujuno',
       amount: (parseFloat(e.target.amount.value) * 1000000).toString(),
     }
-    console.log("yeah")
-    let c = wallet.getNoWASMClient();
-    setMintLoading(true);
-    resolveName(e.target.nmval.value, "juno").then((address) => {
-      
-      c.sendTokens( wallet.address, address, [coin], "auto").then((r) => {
-        setMintLoading(false)
-          toast.success('Tokens Sent!', {
-            style: { maxWidth: 'none' },
+    console.log('yeah')
+    let c = wallet.getNoWASMClient()
+    setMintLoading(true)
+    resolveName(e.target.nmval.value, 'juno')
+      .then((address) => {
+        c.sendTokens(wallet.address, address, [coin], 'auto')
+          .then((r) => {
+            setMintLoading(false)
+            toast.success('Tokens Sent!', {
+              style: { maxWidth: 'none' },
+            })
           })
-      }).catch((e) => {
-        setMintLoading(false)
-          toast.error(e.message, { style: { maxWidth: 'none' } })
-          console.error(e)
+          .catch((e) => {
+            setMintLoading(false)
+            toast.error(e.message, { style: { maxWidth: 'none' } })
+            console.error(e)
+          })
       })
-    }).catch((e)=> {
-      toast.error(e.message, { style: { maxWidth: 'none' } })
-          console.error(e)
-    });
-    
-    
-
-    
-    
+      .catch((e) => {
+        toast.error(e.message, { style: { maxWidth: 'none' } })
+        console.error(e)
+      })
   }
 
   return (
@@ -100,9 +92,7 @@ const Airdrop: NextPage = () => {
               className="col-span-2 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
               style={{ marginLeft: '-10px', paddingLeft: '10px' }}
             >
-              <label htmlFor="nmval">
-                .rns
-              </label>
+              <label htmlFor="nmval">.rns</label>
             </div>
           </div>
 
@@ -118,13 +108,9 @@ const Airdrop: NextPage = () => {
               className="col-span-2 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
               style={{ marginLeft: '-10px', paddingLeft: '10px' }}
             >
-              <label htmlFor="amount">
-                Juno
-              </label>
+              <label htmlFor="amount">Juno</label>
             </div>
           </div>
-
-
 
           <button
             type="submit"
@@ -133,8 +119,6 @@ const Airdrop: NextPage = () => {
           >
             Send
           </button>
-
-
         </form>
       </div>
     </div>

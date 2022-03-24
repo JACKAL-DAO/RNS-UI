@@ -109,7 +109,6 @@ const Airdrop: NextPage = () => {
     setAKASH(getAddress('akash', getHex(data.owner)))
     setSIF(getAddress('sif', getHex(data.owner)))
     setCERTIK(getAddress('certik', getHex(data.owner)))
-    
   }
 
   return (

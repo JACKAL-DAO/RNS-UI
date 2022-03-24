@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useWallet } from 'contexts/wallet'
-import React, { useState, useEffect, KeyboardEvent  } from 'react'
+import React, { useState, useEffect, KeyboardEvent } from 'react'
 import toast from 'react-hot-toast'
 import { Coin } from '@cosmjs/stargate'
 
@@ -15,14 +15,12 @@ const Airdrop: NextPage = () => {
   const [currentCost, setCost] = useState(0)
 
   const checkTaken = (e: React.ChangeEvent<HTMLInputElement>) => {
-  
     e.target.value = e.target.value.replace(/[^\x00-\x7F]/g, '')
     setCost(calculate_cost(e.target.value.length))
   }
 
   const asciiProof = (evt: KeyboardEvent<HTMLInputElement>) => {
-    
-    return true;
+    return true
   }
 
   const setYearsCount = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,13 +81,8 @@ const Airdrop: NextPage = () => {
     let kava = await window.keplr.getKey('kava-9')
     kava = kava.bech32Address
 
-    
-
-
     let terra = await window.keplr.getKey('columbus-5')
     terra = terra.bech32Address
-
-    
 
     const client = wallet.getClient()
 

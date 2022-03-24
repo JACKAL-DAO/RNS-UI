@@ -19,7 +19,6 @@ const Airdrop: NextPage = () => {
   const [mintLoading, setMintLoading] = useState(false)
 
   const checkTaken = (address: String) => {
-
     console.log(address)
   }
 
