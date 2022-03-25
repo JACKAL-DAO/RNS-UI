@@ -27,3 +27,12 @@ export interface AppConfig {
   readonly fees: FeeOptions
   readonly codeId?: number
 }
+
+export interface NetConfig {
+  readonly mainnet: AppConfig,
+  readonly juno: AppConfig,
+  readonly testnet: AppConfig,
+  readonly secret: AppConfig,
+  readonly cosmos: AppConfig,
+  readonly osmo: AppConfig
+}

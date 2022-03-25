@@ -6,6 +6,7 @@ import { useWallet } from 'contexts/wallet'
 import React, { useState, useEffect, KeyboardEvent } from 'react'
 import toast from 'react-hot-toast'
 import { Coin } from '@cosmjs/stargate'
+import { resolveName, getAddress, getHex } from 'utils/retriever'
 
 const Airdrop: NextPage = () => {
   const theme = useTheme()
@@ -13,11 +14,18 @@ const Airdrop: NextPage = () => {
   const [mintLoading, setMintLoading] = useState(false)
   const [yearCount, setYears] = useState(2)
   const [currentCost, setCost] = useState(0)
+  const [isTaken, setTaken] = useState(false)
 
   const checkTaken = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.replace(/[^\x00-\x7F]/g, '')
     e.target.value = e.target.value.replace(' ', '')
     setCost(calculate_cost(e.target.value.length))
+
+    resolveName(e.target.value, "juno").then((g) => {
+      setTaken(true);
+    }).catch((e) => {
+      setTaken(false);
+    })
   }
 
   const asciiProof = (evt: KeyboardEvent<HTMLInputElement>) => {
@@ -166,18 +174,18 @@ const Airdrop: NextPage = () => {
           className="container mx-auto grid gap-1 grid-cols-12 justify-items-center items-center"
           onSubmit={registerName}
         >
-          <div className="col-span-6 h-full w-full block grid grid-cols-8">
+          <div className={"rounded-lg col-span-6 h-full w-full block grid grid-cols-8"}>
             <input
               name="nmval"
               id="nmval"
               type="text"
-              className="col-span-7 h-full w-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-lg px-4 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className={(isTaken ? "bg-red-400 " : "") + " focus-visible:outline-0 col-span-7 h-full w-full bg-gray-50 box-content border-gray-300 text-black text-2xl rounded-lg px-4 dark:bg-gray-700 dark:placeholder-gray-400"}
               placeholder={'Enter name you wish to register'}
               onChange={(e) => checkTaken(e)}
               onKeyPress={(event) => asciiProof(event)}
             />
             <div
-              className="col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"
+              className={(isTaken ? "bg-red-400 " : "") + " col-span-1 text-2xl block h-full w-full text-left rounded-r-md bg-white text-black grid items-center"}
               style={{ marginLeft: '-10px', paddingLeft: '10px' }}
             >
               <label htmlFor="nmval" className="col-span-1">
