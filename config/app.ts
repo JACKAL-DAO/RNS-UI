@@ -29,10 +29,10 @@ export interface AppConfig {
 }
 
 export interface NetConfig {
-  readonly mainnet: AppConfig,
-  readonly juno: AppConfig,
-  readonly testnet: AppConfig,
-  readonly secret: AppConfig,
-  readonly cosmos: AppConfig,
+  readonly mainnet: AppConfig
+  readonly juno: AppConfig
+  readonly testnet: AppConfig
+  readonly secret: AppConfig
+  readonly cosmos: AppConfig
   readonly osmo: AppConfig
 }

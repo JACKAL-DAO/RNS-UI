@@ -97,7 +97,6 @@ export const osmoConfig: AppConfig = {
 }
 
 export const getConfig = (network: string): AppConfig => {
-
   const nets: NetConfig = {
     mainnet: mainnetConfig,
     juno: mainnetConfig,
@@ -107,10 +106,9 @@ export const getConfig = (network: string): AppConfig => {
     osmo: osmoConfig,
   }
 
-  let choice = nets[network as keyof NetConfig];
+  let choice = nets[network as keyof NetConfig]
   if (choice == undefined) {
-    choice = mainnetConfig;
+    choice = mainnetConfig
   }
-  return choice;
-
+  return choice
 }

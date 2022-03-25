@@ -3,6 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
+  mode: 'jit',
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -14,9 +15,11 @@ module.exports = {
         juno: '#CA706D',
         dark: '#06090B',
         gray: '#F3F6F8',
-        'dark-gray': '#191D20',
-        'jackal-green': '#45d29d',
-
+        'jackal': {
+          'DEFAULT': '#45d29d',
+          'light': '#45d29d',
+          'dark': '#1b523d'
+        },
         neutral: colors.neutral,
         plumbus: {
           DEFAULT: '#F0827D',
@@ -47,6 +50,8 @@ module.exports = {
     // https://daisyui.com
     require('daisyui'),
 
+    require('tailwind-scrollbar'),
+
     // custom gradient background
     plugin(function ({ addUtilities }) {
       addUtilities({
@@ -59,4 +64,8 @@ module.exports = {
       })
     }),
   ],
+
+  variants: {
+    scrollbar: ['rounded']
+  },
 }
