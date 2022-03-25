@@ -15,10 +15,10 @@ module.exports = {
         juno: '#CA706D',
         dark: '#06090B',
         gray: '#F3F6F8',
-        'jackal': {
-          'DEFAULT': '#45d29d',
-          'light': '#45d29d',
-          'dark': '#1b523d'
+        jackal: {
+          DEFAULT: '#45d29d',
+          light: '#45d29d',
+          dark: '#1b523d',
         },
         neutral: colors.neutral,
         plumbus: {
@@ -66,6 +66,6 @@ module.exports = {
   ],
 
   variants: {
-    scrollbar: ['rounded']
+    scrollbar: ['rounded'],
   },
 }

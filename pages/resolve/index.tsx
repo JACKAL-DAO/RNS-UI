@@ -114,13 +114,12 @@ const Airdrop: NextPage = () => {
   return (
     <div className="h-3/4 w-3/4">
       <div>
-        <div className='avatar absolute top-24'>
+        <div className="avatar absolute top-24">
           <div className="w-24 h-24 rounded">
             <img
               className="col-span-1 w-full aspect-square  "
-              src={avatar_url ? avatar_url : "/logo.png"}
-            >
-            </img>
+              src={avatar_url ? avatar_url : '/logo.png'}
+            ></img>
           </div>
         </div>
 
@@ -141,9 +140,7 @@ const Airdrop: NextPage = () => {
               placeholder={'Enter name you wish to resolve'}
               onChange={(e) => checkTaken(e.target.value)}
             />
-            <div
-              className="col-span-1 text-2xl block h-full pl-4 w-full text-left rounded-r-md bg-white text-black grid items-center"
-            >
+            <div className="col-span-1 text-2xl block h-full pl-4 w-full text-left rounded-r-md bg-white text-black grid items-center">
               <label htmlFor="nmval" className="col-span-1">
                 .rns
               </label>
