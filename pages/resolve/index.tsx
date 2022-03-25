@@ -103,7 +103,7 @@ const Airdrop: NextPage = () => {
     setTERRA(data.terra_address)
 
     setJACKAL(getAddress('jackal', getHex(data.owner)))
-    setATOM(getAddress('atom', getHex(data.owner)))
+    setATOM(getAddress('cosmos', getHex(data.owner)))
     setSTARS(getAddress('stars', getHex(data.owner)))
     setOSMO(getAddress('osmo', getHex(data.owner)))
     setAKASH(getAddress('akash', getHex(data.owner)))

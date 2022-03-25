@@ -16,6 +16,7 @@ const Airdrop: NextPage = () => {
 
   const checkTaken = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.replace(/[^\x00-\x7F]/g, '')
+    e.target.value = e.target.value.replace(' ', '');
     setCost(calculate_cost(e.target.value.length))
   }
 
