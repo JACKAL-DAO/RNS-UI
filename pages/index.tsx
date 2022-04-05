@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <img alt="RNS Logo" src={'/RNS_LOGO.png'} width={650} height={160} />
         <br />
 
-        <div className="text-[4rem]">Welcome to RNS Name Service</div>
+        <div className="text-[4rem]">Retriever Name Service</div>
 
         <div className="text-center text-xl mt-3">
           RNS is the Inter-Blockchain-Communication name service built on JUNO,
