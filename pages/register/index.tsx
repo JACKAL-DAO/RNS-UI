@@ -92,8 +92,9 @@ const Airdrop: NextPage = () => {
     let kava = await window.keplr.getKey('kava-9')
     kava = kava.bech32Address
 
-    let terra = await window.keplr.getKey('columbus-5')
-    terra = terra.bech32Address
+    // let terra = await window.keplr.getKey('columbus-5')
+    // terra = terra.bech32Address
+    let terra = ''
 
     const client = wallet.getClient()
 

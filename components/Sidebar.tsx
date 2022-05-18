@@ -12,7 +12,7 @@ import getShortAddress from 'utils/getShortAddress'
 import { loadKeplrWallet, useKeplr } from 'services/keplr'
 import { useRouter } from 'next/router'
 import { getConfig } from 'config'
-import { addTerra } from 'utils/terra'
+// import { addTerra } from 'utils/terra'
 
 const Sidebar: NextPage = () => {
   const router = useRouter()
@@ -39,7 +39,7 @@ const Sidebar: NextPage = () => {
   }, [])
 
   const connectWallet = useCallback(async () => {
-    keplr.connect(), await addTerra()
+    keplr.connect(), //await addTerra()
     keplr.connect()
   }, [keplr])
 
