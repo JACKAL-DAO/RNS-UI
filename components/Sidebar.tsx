@@ -40,7 +40,7 @@ const Sidebar: NextPage = () => {
 
   const connectWallet = useCallback(async () => {
     keplr.connect(), //await addTerra()
-    keplr.connect()
+      keplr.connect()
   }, [keplr])
 
   const walletOnClick = () => {
