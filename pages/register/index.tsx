@@ -92,7 +92,6 @@ const Airdrop: NextPage = () => {
     let kava = await window.keplr.getKey('kava_2222-10')
     kava = kava.bech32Address
 
-
     const client = wallet.getClient()
 
     const contractAddress: string = String(
