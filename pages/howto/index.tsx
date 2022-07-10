@@ -83,7 +83,7 @@ const Airdrop: NextPage = () => {
     iov = iov.bech32Address
     let pers = await window.keplr.getKey('core-1')
     pers = pers.bech32Address
-    let kava = await window.keplr.getKey('kava-9')
+    let kava = await window.keplr.getKey('kava_2222-10')
     kava = kava.bech32Address
 
     let funds: Coin[] = [juno]
@@ -133,10 +133,8 @@ const Airdrop: NextPage = () => {
     iov = iov.bech32Address
     let pers = await window.keplr.getKey('core-1')
     pers = pers.bech32Address
-    let kava = await window.keplr.getKey('kava-9')
+    let kava = await window.keplr.getKey('kava_2222-10')
     kava = kava.bech32Address
-    let terra = await window.keplr.getKey('columbus-5')
-    terra = terra.bech32Address
 
     const client = wallet.getClient()
 
@@ -149,7 +147,7 @@ const Airdrop: NextPage = () => {
     const msg = {
       update_params: {
         name: nm,
-        terra_address: terra,
+        terra_address: null,
         secret_address: secret_id,
         crypto_org_address: cro,
         kava_address: kava,
@@ -206,7 +204,7 @@ const Airdrop: NextPage = () => {
           className="rounded-lg"
           width="1280"
           height="720"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         ></iframe>

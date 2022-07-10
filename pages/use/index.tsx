@@ -35,11 +35,9 @@ const Airdrop: NextPage = () => {
     iov = iov.bech32Address
     let pers = await window.keplr.getKey('core-1')
     pers = pers.bech32Address
-    let kava = await window.keplr.getKey('kava-9')
+    let kava = await window.keplr.getKey('kava_2222-10')
     kava = kava.bech32Address
 
-    let terra = await window.keplr.getKey('columbus-5')
-    terra = terra.bech32Address
 
     let juno = await window.keplr.getKey('juno-1')
     juno = juno.bech32Address

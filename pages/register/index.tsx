@@ -89,11 +89,9 @@ const Airdrop: NextPage = () => {
     iov = iov.bech32Address
     let pers = await window.keplr.getKey('core-1')
     pers = pers.bech32Address
-    let kava = await window.keplr.getKey('kava-9')
+    let kava = await window.keplr.getKey('kava_2222-10')
     kava = kava.bech32Address
 
-    let terra = await window.keplr.getKey('columbus-5')
-    terra = terra.bech32Address
 
     const client = wallet.getClient()
 
@@ -108,7 +106,7 @@ const Airdrop: NextPage = () => {
       register_name: {
         name: nm,
         years: years,
-        terra_address: terra,
+        terra_address: null,
         secret_address: secret_id,
         crypto_org_address: cro,
         kava_address: kava,

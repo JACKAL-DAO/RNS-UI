@@ -49,8 +49,7 @@ export async function loadKeplrWallet(
   await anyWindow.keplr.enable('crypto-org-chain-mainnet-1')
   await anyWindow.keplr.enable('iov-mainnet-ibc')
   await anyWindow.keplr.enable('core-1')
-  await anyWindow.keplr.enable('kava-9')
-  await anyWindow.keplr.enable('columbus-5')
+  await anyWindow.keplr.enable('kava_2222-10')
 
   const signer = await anyWindow.getOfflineSignerAuto(config.chainId)
   signer.signAmino = signer.signAmino ?? signer.sign
