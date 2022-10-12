@@ -167,9 +167,11 @@ const Airdrop: NextPage = () => {
 
   return (
     <div className="h-4/4 w-11/12 w-lg-3/4">
-      <h1 className="text-6xl font-bold text-center">Register Domain Name</h1>
-      <div className="my-6">
-        <form
+      <h1 className="text-6xl font-bold text-center">RNS Registration has been temporarily halted.</h1>
+      {/* <div className="my-6"> */}
+      <p className='text-lg mt-8'>As we prepare to move the RNS system away from Juno and onto the Jackal Blockchain, we are halting the registration of names. All names will still work on both chains until the names on Juno expire. Official support for RNS on Juno is ending on October 26th but support for RNS on Jackal will begin. This move brings many new features such as subdomains, traditional DNS systems and IBC compatibilty.</p>
+
+      {/* <form
           className="container mx-auto grid gap-1 grid-cols-12 justify-items-center items-center"
           onSubmit={registerName}
         >
@@ -381,8 +383,8 @@ const Airdrop: NextPage = () => {
               placeholder={'Enter u/username'}
             />
           </div>
-        </form>
-      </div>
+        </form> */}
+      {/* </div> */}
     </div>
   )
 }
