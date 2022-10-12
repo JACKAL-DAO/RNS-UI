@@ -173,11 +173,12 @@ const Airdrop: NextPage = () => {
       {/* <div className="my-6"> */}
       <p className="text-lg mt-8">
         As we prepare to move the RNS system away from Juno and onto the Jackal
-        Blockchain, we are halting the registration of names. Your names will be moving to the Jackal Blockchain on October 26th. All names will
-        still work on both chains until the names on Juno expire. Official
-        support for RNS on Juno is ending on October 26th but support for RNS on
-        Jackal will begin. This move brings many new features such as
-        subdomains, traditional DNS systems and IBC compatibilty.
+        Blockchain, we are halting the registration of names. Your names will be
+        moving to the Jackal Blockchain on October 26th. All names will still
+        work on both chains until the names on Juno expire. Official support for
+        RNS on Juno is ending on October 26th but support for RNS on Jackal will
+        begin. This move brings many new features such as subdomains,
+        traditional DNS systems and IBC compatibilty.
       </p>
 
       {/* <form
